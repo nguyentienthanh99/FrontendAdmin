@@ -1,0 +1,177 @@
+.all{
+    //width: 1112px;
+width: 1112px; 
+    // margin-left: 192px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.flex{
+    display: flex; 
+}
+.centre-heigh{    
+    align-items: center;
+}
+.centre-width{    
+    justify-content: center;
+}
+.header-status{
+    margin-left: 20px; 
+    font-size: 15px;
+    color: #a191ff;
+    font-weight: bold;
+}
+
+.detail-header-status{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.detail-header-status-tt{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.color-comfin-red{
+    color: #ff3c3c;
+}
+
+.color-comfin-green{
+    color: #51ff00d7;
+}
+
+.card-detail-bill{
+    display: flex; 
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+
+.title-card{
+    font-size: 15px;
+    color: #ff3c3c; 
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.header{
+    background-color: #d4d4d4;
+  }
+  
+  .first{
+    width: 400px;
+  }
+
+  mat-panel-description{
+    width: 105px;
+    color: #000000;
+  }
+
+.card-product{
+    width: 90%;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+}
+
+.card-pay{
+    width: 90%;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px; 
+   
+}
+
+.card-user{
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px; 
+    margin-right: 50px;
+}
+  
+.list-items:hover{
+    background-color: #d4d4d4;
+}
+
+.bill-info{
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.note-bill{
+    width: 50%; 
+    margin-top: 20px; 
+    margin-left: 20px;
+    border-right: 2px solid #d6d6d6;
+}
+
+.detail-not-bill{
+    width: 90%;
+    margin-top: 10px;
+}
+
+.detail-bill-info{
+    width: 50%; 
+    margin-top: 20px; 
+    margin-left: 20px;
+}
+
+.title-bill-info{
+    margin-left: 20px;
+}
+
+.data-bill-info{
+    float: right;
+    margin-right: 40px;
+}
+
+.none{
+    display: none;
+}
+
+.button-comfirm{
+    width: 100%;
+}
+
+.thanh-toan{
+    display: flex;
+    width: 100%;
+}
+
+.comfirmed{
+    font-size: 15px;
+}
+
+.history-user{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.label1{
+    margin-left: 20px;
+    width: 100%;
+}
+
+.label2{
+    color: #ff3c3c;
+    float: right;
+    margin-right: 10px;
+}
+
+.address{
+    margin-right: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+
+
+
+  
+    .title-input{
+        color: #ff0000;
+        font-size: 16px;
+    }

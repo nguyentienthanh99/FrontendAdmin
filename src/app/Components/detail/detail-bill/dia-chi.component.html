@@ -1,0 +1,27 @@
+<div>
+    
+    <mat-form-field >
+        <mat-label class="title-input">Địa chỉ</mat-label>
+        <input matInput placeholder="Tên nhà cung cấp" [(ngModel)]="KhachHang.DiaChi">
+        <!-- <mat-error *ngIf="Empty.invalid">{{mesErr}}</mat-error> -->
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input" >Phường/xã</mat-label>
+        <input matInput placeholder="Phường/xã" [(ngModel)]="KhachHang.Phuong">
+        <!-- <mat-error *ngIf="EmptySDT.invalid">{{mesErr1}}</mat-error> -->
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input">Quận/huyện</mat-label>
+        <input matInput placeholder="Quận/huyện" [(ngModel)]="KhachHang.Quan">
+        <!-- <mat-error *ngIf="EmptyEmail.invalid">{{mesErr2}}</mat-error> -->
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input" >Tỉnh/thành phố</mat-label>
+        <input matInput placeholder="Tỉnh/thành phố" [(ngModel)]="KhachHang.ThanhPho">
+    </mat-form-field>
+
+</div>
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="suaKhachHang(KhachHang.MaKH,KhachHang.DiaChi,KhachHang.Phuong,KhachHang.Quan,KhachHang.ThanhPho)">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="close()">Hủy</button>
+  </div>

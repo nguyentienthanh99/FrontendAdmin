@@ -1,0 +1,64 @@
+<mat-accordion>
+    <mat-expansion-panel class="header" hideToggle disabled="true">
+      <mat-expansion-panel-header class="header-menu">
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected" (change)="setAll($event.checked)"></mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" >
+          Mã phiếu nhập
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Tên người nhập
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Tên nhà cung cấp
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+            Ngày tạo phiếu nhập
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Số lượng
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel disabled="true" class="menu list-items" hideToggle *ngFor="let item of task.ListHDN |  paginate: { itemsPerPage: 10, currentPage: page }" value="item.MaHDN">
+      <mat-expansion-panel-header>
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected">
+            
+          </mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaPN)">
+          {{item.MaPN}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaPN)">
+          {{item.TenNguoiNhap}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaPN)">
+          {{item.TenNCC}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaPN)">
+          {{item.NgayTaoPN | date:"dd/MM/Y"}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaPN)">
+          {{item.SL}}
+        </mat-panel-description>
+        
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <div style="display: flex;justify-content: center;">
+      <pagination-controls
+          previousLabel="Trang trước"
+          nextLabel="Trang sau"
+          [responsive]="true"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+    </div>
+    <mat-expansion-panel class="menu" disabled="true">
+      <mat-expansion-panel-header style="padding-left: 0px;">
+        <button mat-raised-button color="warn" (click)="ThemHDN()">Thêm</button>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

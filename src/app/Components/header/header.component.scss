@@ -1,0 +1,120 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 114px;
+    width: 100%;
+    // margin-left: 6%;
+    left: 0px;
+    background-color: #fa9600;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    // width: 100%;
+}
+.centre{
+    justify-content: center;
+}
+.logo{
+    background-color: #fa9600;
+    height: 114px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    
+    p{
+        margin: 0px;
+        color: #ffffff;
+    }
+    #name{
+        font-size: 30px;
+        color: #ffffff;
+    }
+    #slogan{
+        font-size: 13px;
+        color: #ffffff;
+    }
+}
+.search{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    padding-left: 10px;
+    padding-right: 0px;
+    .LoaiSP_input{
+        width: 20%;
+        height: 37px;
+    }
+    .TenSP_input{
+        width: 70%;
+        height: 37px;
+    }
+    button{
+        height: 40px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        background-color: #ff6924;
+    }
+}
+
+
+.user{
+    display: flex;
+    align-items: center;
+    padding-left: 31%;
+    width: 10%;
+    color: #ffffff;
+    .fa-user{
+        font-size: 30px;
+    }
+    .user-login{
+        p{
+            margin: 0px;
+            font-size: 13px;
+            margin-left: 10px;
+        }
+        #name{
+            width: 200px;
+        }
+        .login{
+            width: 200px;
+            cursor: pointer;
+        }
+    }
+}
+
+.login:hover{
+    color: aqua;
+}
+
+.GioHang{
+    display: flex;
+    align-items: center;
+    // padding-left: 6%;
+    margin-left: 20px;
+    
+    width: 10%;
+    color: #ffffff;
+    .fa-shopping-cart{
+        font-size: 30px;
+    }
+}
+
+.menu{
+    display: flex;
+    margin-left: 50px;
+}
+.item-menu{
+    margin-left: 20px;
+}
+.detail-menu{
+    display: flex;
+    align-items: center;
+}
+
+
+.demo-menu{
+    min-width: 192px;
+  }

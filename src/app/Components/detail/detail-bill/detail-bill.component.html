@@ -1,0 +1,236 @@
+<div class="all">
+    <div style="display: flex;">
+        <div>
+            <div>
+                <mat-label class="header-status">
+                    Mã
+                </mat-label>
+            </div>
+            <div style="margin-top: 10px;">
+                <mat-label style="margin-left: 20px; font-size: 15px;color: #000000;">
+                    #{{item.MaHD}}
+                </mat-label>
+            </div>
+        </div>    
+        <div style="margin-left: 40px;">
+            <div>
+                <mat-label class="header-status">
+                    Trạng thái giao hàng
+                </mat-label>
+            </div>
+            <div class="detail-header-status">
+                <button mat-raised-button color="primary" [ngClass]="{'button-comfirm': !item.TrangThaiGiaoHang, 'none': item.TrangThaiGiaoHang} " (click)="comfirmGiaoHang(item.MaHD)">Xác thực</button>
+                <i class="far fa-dot-circle color-comfin-green" [ngClass]="{'comfirmed': item.TrangThaiGiaoHang, 'none': !item.TrangThaiGiaoHang}"></i>
+                <mat-label class="color-comfin-green" [ngClass]="{'comfirmed': item.TrangThaiGiaoHang, 'none': !item.TrangThaiGiaoHang}" style=" font-size: 15px;">
+                    {{item.TrangThaiGiaoHang | GiaoHang}}
+                </mat-label>
+            </div>
+        </div>  
+        <div style="margin-left: 40px;">
+            <div>
+                <mat-label class="header-status" style="width: 320px;display: flex;justify-content: center;">
+                    Trạng thái thanh toán
+                </mat-label>
+           </div>
+
+            <div style="display: flex;" [ngClass]="{'button-comfirm': !item.TrangThaiThanhToan, 'none': item.TrangThaiThanhToan}">
+                <div class="detail-header-status">
+                    <button mat-raised-button color="primary" [ngClass]="{'button-comfirm': !item.TrangThaiThanhToan, 'none': item.TrangThaiThanhToan}" (click)="openDialog()">Đã đặt cọc</button>
+                </div>
+                <div class="detail-header-status">
+                    <button mat-raised-button color="primary" [ngClass]="{'button-comfirm': !item.TrangThaiThanhToan, 'none': item.TrangThaiThanhToan}" (click)="comfirmThanhToan(item.MaHD)">Xác thực đã thanh toán hết</button>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div>
+                    <i class="far fa-dot-circle color-comfin-green" [ngClass]="{'comfirmed': item.TrangThaiThanhToan, 'none': !item.TrangThaiThanhToan}"></i>
+                    <mat-label class= "color-comfin-green" [ngClass]="{'comfirmed': item.TrangThaiThanhToan, 'none': !item.TrangThaiThanhToan}" style=" font-size: 15px;">
+                        {{item.TrangThaiThanhToan | ThanhToan}}
+                    </mat-label>
+                </div>
+            </div>
+            
+        </div> 
+    </div>
+
+    <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+
+    <div style="display: flex;">
+        <div style="width: 80%;">
+            <div class="card-detail-bill">
+                <mat-card class="card-product">
+                    <div style=" height: 30px;">
+                        <mat-label class ="title-card">
+                            Sản phẩm
+                        </mat-label>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div>
+                        <mat-accordion>
+                            <mat-expansion-panel class="header" hideToggle disabled="true">
+                              <mat-expansion-panel-header class="header-menu">
+                                <mat-panel-description style="color: #000000;">
+                                  Mã bánh
+                                </mat-panel-description>
+                                <mat-panel-description style="color: #000000;" >
+                                  Kích thước
+                                </mat-panel-description>
+                                <mat-panel-description style="color: #000000;" >
+                                  Số lượng
+                                </mat-panel-description>
+                                <mat-panel-description style="color: #000000;" >
+                                    Giá bán
+                                  </mat-panel-description>
+                                  <mat-panel-description style="color: #000000;" >
+                                    Khuyến mại
+                                  </mat-panel-description>
+                                <mat-panel-description style="color: #000000;" >
+                                  Thành tiền
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+                            </mat-expansion-panel>
+                          
+                            <mat-expansion-panel disabled="true"  hideToggle *ngFor="let it of itemCTHDs" class="list-items">
+                              <mat-expansion-panel-header class="header-menu">
+                                <mat-panel-description class = "flex centre-heigh" style="color: #000000;">
+                                  <mat-label style="margin-left: 20px;">{{it.MaBanh}}</mat-label>
+                                </mat-panel-description>
+                                <mat-panel-description style="color: #000000;align-items: center;" >
+                                  {{it.TenKT}}
+                                </mat-panel-description>
+                                <mat-panel-description style="color: #000000;align-items: center;" >
+                                  {{it.SL}}
+                                </mat-panel-description>
+                                <mat-panel-description style="color: #000000;align-items: center;" >
+                                    {{it.DonGiaBan | DonVi}}
+                                  </mat-panel-description>
+                                  <mat-panel-description style="color: #000000;align-items: center;" >
+                                    {{it.GiaTri}} {{it.LoaiKM | LoaiKM}}
+                                  </mat-panel-description>
+                                <mat-panel-description style="color: #000000;align-items: center;" >
+                                    {{it.TongTien | DonVi}}
+                                  </mat-panel-description>
+                              </mat-expansion-panel-header>
+                            </mat-expansion-panel>
+        
+                          </mat-accordion>
+                    </div>
+                </mat-card>
+            </div>
+        
+            <div class="card-detail-bill">
+                <mat-card class="card-pay">
+                    <div style=" height: 30px;">
+                        <mat-label class ="title-card">
+                            Thanh Toán
+                        </mat-label>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="bill-info">
+                        <div class="note-bill">
+                            <div>
+                                <mat-label>Ghi chú đơn hàng</mat-label>
+                            </div>
+                            <textarea class="detail-not-bill" matInput type="text" maxlength="250" placeholder="Thêm ghi chú cho đơn hàng" disabled="false"></textarea>
+                            <button mat-raised-button color="primary" style="float: right; margin-right: 10%;">Cập nhật</button>
+                        </div>
+                        <div class="detail-bill-info">
+                            <div>
+                                <mat-label class="title-bill-info">Số lượng sản phẩm</mat-label>
+                                <mat-label class="data-bill-info">{{DemSP}}</mat-label>
+                            </div>
+                            <div>
+                                <mat-label class="title-bill-info">Cần thanh toán</mat-label>
+                                <mat-label class="data-bill-info">{{SoTienDaThanhToan | DonVi}}</mat-label>
+                            </div>
+                            <div>
+                                <mat-label class="title-bill-info">Còn thiếu</mat-label>
+                                <mat-label class="data-bill-info">{{item.SoTienConLai| DonVi}}</mat-label>
+                            </div>
+                            <div style="margin-top: 20px;font-weight: bold;">
+                                <mat-label class="title-bill-info">Thành tiền</mat-label>
+                                <mat-label class="data-bill-info">{{ThanhTien | DonVi}}</mat-label>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            
+        </div>
+        <div style="width: 100%;">
+            <div class="card-detail-bill">
+                <mat-card class="card-user">
+                    <div style=" height: 30px;display: flex;justify-content: center;">
+                        <mat-label class ="title-card">
+                             Xác thực đơn hàng
+                        </mat-label>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div style="padding-bottom: 20px;">
+                        <div style="display: flex; justify-content: center;">
+                            <mat-label style="margin-top: 10px;" [ngClass]="{'none': !item.TrangThaiXacThuc}" >
+                                Xác thực đơn hàng
+                            </mat-label>
+                        </div>
+                        <div class="flex centre-width centre-heigh" style="margin-top: 10px;">
+                            <button mat-raised-button color="primary" style="width: 80%;" [ngClass]="{'button-comfirm': !item.TrangThaiXacThuc, 'none': item.TrangThaiXacThuc}" (click)="comfirm(item.MaHD)">Xác thực</button>
+                            <i class="far fa-dot-circle color-comfin-green" [ngClass]="{'comfirmed': item.TrangThaiXacThuc, 'none': !item.TrangThaiXacThuc}"></i>
+                            <mat-label class= "color-comfin-green" style="margin-left: 10px;" [ngClass]="{'comfirmed': item.TrangThaiXacThuc, 'none': !item.TrangThaiXacThuc}">
+                                Đã xác thực
+                            </mat-label>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="card-detail-bill">
+                <mat-card class="card-user">
+                    <div style=" height: 30px;">
+                        <mat-label class ="title-card">
+                             Thông tin người mua
+                        </mat-label>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="history-user">
+                        <mat-label class="label1">
+                             {{KhachHang.TenKH | VietHoa}} #{{KhachHang.MaKH}}
+                        </mat-label>
+                    </div>
+                    <div class="history-user">
+                        <mat-label class="label1">
+                            {{KhachHang.SDT}}
+                        </mat-label>
+                    </div>
+                    <div class="history-user">
+                        <mat-label class="label1">
+                            {{KhachHang.Email}}
+                        </mat-label>
+                    </div>
+
+                    <!-- <div class="history-user">
+                        <mat-label class="address">
+                            {{KhachHang.DiaChi}}, {{KhachHang.Phuong}}, {{KhachHang.Quan}}, {{KhachHang.ThanhPho}}, Viet Nam
+                        </mat-label>
+                    </div> -->
+                    <div class="history-user">
+                        <mat-label class="label1">
+                            Đã đặt : <mat-label class="label2">{{SoHD.SoHoaDon}} đơn hàng</mat-label>
+                        </mat-label>
+                    </div>
+
+                    <mat-divider></mat-divider>
+                    <div style=" height: 30px;margin-top: 20px;display: flex;align-items: center;">
+                        <mat-label class ="title-card" >
+                             Thông tin giao hàng
+                        </mat-label>
+                        <button mat-raised-button color="primary" style="margin-left: 20px;" (click)="suaDiaChiGiaoHang(KhachHang.MaKH)">Sửa</button>
+                    </div>
+                    <div class="history-user">
+                        <mat-label class="address">
+                            {{KhachHang.DiaChi}}, {{KhachHang.Phuong}}, {{KhachHang.Quan}}, {{KhachHang.ThanhPho}}, Viet Nam
+                        </mat-label>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+.header{
+    background-color: #fa9600;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    
+}
+header{
+    position: sticky;
+    // position: fixed;
+
+}
+.content{
+    display: flex;
+    justify-content: center;
+    // z-index: 1000;
+}
+
+.menu{
+    position: fixed;
+    height: 100%;
+    background-color: #fa9600;
+    left: 0;
+    z-index: 10000;
+}
+
+menu{
+    padding: 0px;
+    margin-top: 0px;
+    height: 5000px;
+    // display: flex;
+}
+
+.contents{
+    width: auto;
+    display: grid;
+    overflow-y: none;
+    overflow-x: none;
+    z-index: 1000;
+
+}
+
+.demo-menu{
+    min-width: 192px;
+  }
+:host{
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.title-input{
+    color: #ff0000;
+    font-size: 16px;
+}
+.mat-form-field-infix{
+    padding-top: 0px;
+    margin-top: 0px;
+}

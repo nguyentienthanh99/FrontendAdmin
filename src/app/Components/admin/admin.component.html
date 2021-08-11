@@ -1,0 +1,52 @@
+<mat-accordion>
+    <mat-expansion-panel class="header" hideToggle disabled="true">
+      <mat-expansion-panel-header class="header-menu">
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected" (change)="setAll($event.checked)"></mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" >
+          Mã
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Tên
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Mật khẩu
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel disabled="true" class="list-items" hideToggle *ngFor="let item of Admins |  paginate: { itemsPerPage: 10, currentPage: page }" value="item.MaKH">
+      <mat-expansion-panel-header>
+        <mat-panel-description style="color: #000000;">
+          {{item.MaAD}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;">
+          {{item.TenAD}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;">
+          {{item.MatKhau}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="xoaAD(item.MaAD)" > 
+          <div class="xoa-ad" *ngIf="item.MaAD == idAD && Admins.length > 1">Xóa</div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <div style="display: flex;justify-content: center;">
+      <pagination-controls
+          previousLabel="Trang trước"
+          nextLabel="Trang sau"
+          [responsive]="true"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+    </div>
+    <mat-expansion-panel class="menu" disabled="true">
+        <mat-expansion-panel-header style="padding-left: 0px;display: flex;align-items: center;">
+          <button mat-raised-button color="warn" (click)="openDialog()">Thêm</button>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+  </mat-accordion>
+  

@@ -1,0 +1,74 @@
+.all{
+    width: 1112px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.header-status{
+    margin-left: 20px; 
+    font-size: 15px;
+    color: #a191ff;
+    font-weight: bold;
+}
+
+.card-detail-NCC{
+    display: flex; 
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.card-NCC{
+    width: 97%;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    
+}
+
+.title-card{
+    font-size: 15px;
+    color: #ff3c3c; 
+    font-weight: bold;
+    margin-left: 20px;
+    
+}
+
+.info-user{
+    margin-left: 20px;
+    
+    padding-bottom: 20px;
+}
+
+.info-item{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.title-item{
+    min-width: 100px;
+    color: #a191ff;
+}
+.title-item1{
+    min-width: 20px;
+}
+
+.header{
+    background-color: #d4d4d4;
+}
+// .first{
+//     width: 20px;
+// }
+mat-panel-description{
+    color: #000000;
+    width: 16.5%;
+}
+mat-expansion-panel-header:hover{
+    background-color: #d4d4d4;
+}
+.delete{
+    max-width: 10px;
+    float: right;
+}

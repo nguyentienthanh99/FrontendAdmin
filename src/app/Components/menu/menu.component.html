@@ -1,0 +1,89 @@
+
+<div style="display: flex;min-width: 206.484px;">
+  <div class= "all" style="margin-top: 0px;padding: 0px;">
+  
+    <div class="logo" style="margin-top: 0px;padding: 0px;">
+      <div>
+        <div>
+          <mat-label id="name" (click)="goToAllCake()">TCake</mat-label>
+      </div>
+      <div>
+          <mat-label id="slogan" (click)="goToAllCake()">Bánh cho mọi nhà</mat-label> 
+      </div>
+      </div>
+  </div>
+  <div class="content" style="margin-top: 0px;">
+    <mat-accordion class="menu" style="margin-top: 0px;padding: 0px;">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-menu">
+            <mat-panel-title>
+              <i class="fas fa-birthday-cake"></i>
+            </mat-panel-title>
+            <mat-panel-description style="color: #ffffff;" >
+              Sản phẩm
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-action-row (click)="goToAllCake()">Tất cả bánh</mat-action-row>
+          <mat-action-row (click)="goToTypeCake()">Loại bánh</mat-action-row>
+          <mat-action-row (click)="goToNCC()">Nhà cung cấp</mat-action-row>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-menu">
+            <mat-panel-title>
+              <i class='far fa-clipboard'></i>
+            </mat-panel-title>
+            <mat-panel-description style="color: #ffffff;" >
+              Đơn hàng
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-action-row  (click)="goToHDX()">Hóa đơn xuất</mat-action-row>
+          <mat-action-row (click)="goToHDN()">Hóa đơn nhập</mat-action-row>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-menu" >
+            <mat-panel-title>
+              <i class="fas fa-user-friends"></i>
+            </mat-panel-title>
+            <mat-panel-description style="color: #ffffff;">
+              Người dùng
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-action-row (click)="goToKH()">Khách hàng</mat-action-row>
+          <mat-action-row (click)="goToAdmin()">Người quản lý</mat-action-row>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-menu">
+            <mat-panel-title>
+              <i class="fas fa-ad"></i>
+            </mat-panel-title>
+            <mat-panel-description style="color: #ffffff;">
+              Khuyến mại
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-action-row  (click)="goToKM()">Khuyến mại đang hoạt động</mat-action-row>
+          <mat-action-row (click)="goToKMHH()">Khuyến mại hết hạn</mat-action-row>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel hideToggle disabled>
+          <mat-expansion-panel-header class="header-menu" (click)="goToBC()">
+            <mat-panel-title>
+              <i class="fas fa-chart-bar"></i>
+            </mat-panel-title>
+            <mat-panel-description style="color: #ffffff;">
+              Báo cáo
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+  
+    </mat-accordion>
+  
+  </div>
+  </div>
+  <div style="display: flex;justify-content: center;">
+    
+    <router-outlet></router-outlet>
+  </div>
+</div>

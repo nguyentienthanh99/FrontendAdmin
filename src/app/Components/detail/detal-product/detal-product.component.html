@@ -1,0 +1,208 @@
+<div class="all">
+    <mat-label style="margin-left: 20px; font-size: 20px;color: #a191ff;">
+        {{item.TenBanh}} #{{id}}
+    </mat-label>
+    <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+    <div>
+        <img class="Anh" [src]="item.AnhSP" alt="">
+    </div>
+    <div class="example-form">
+        <div style="display: flex;">
+            <mat-form-field class="Ma-Banh">
+                <mat-label class="title-input">Mã bánh</mat-label>
+                <input matInput type="text" placeholder="Mã bánh" [(ngModel)]="item.MaBanh" disabled>
+            </mat-form-field>
+    
+            <mat-form-field class="Ten-Banh">
+              <mat-label class="title-input">Tên bánh</mat-label>
+              <input matInput placeholder="Tên bánh" [(ngModel)]="item.TenBanh" [formControl]="Empty" required>
+              <mat-error *ngIf="Empty.invalid">{{mesErr}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="display: flex; margin-top: 10px;">
+          <mat-form-field class="So-Luong">
+            <mat-label class="title-input">Số lượng nhập</mat-label>
+            <input matInput placeholder="Số lượng" [(ngModel)]="item.SL" disabled>
+          </mat-form-field>
+          <mat-form-field class="So-Luong">
+            <mat-label class="title-input">Số lượng tồn kho</mat-label>
+            <input matInput placeholder="Số lượng" [(ngModel)]="item.SLTon" disabled>
+          </mat-form-field>
+            <mat-form-field class="Loai-Banh">
+              <mat-label class="title-input">Tên loại bánh</mat-label>
+              <mat-select [(ngModel)]="item.MaLoaiBanh" (selectionChange)="changeClient($event.value)" [value]="item.TenLoaiBanh">
+                <mat-option *ngFor="let itemLoai of itemLoaiBanh" [value]="itemLoai.MaLoaiBanh" >
+                  {{itemLoai.TenLoaiBanh}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="Loai-Banh">
+              <mat-label class="title-input">Mã loại bánh</mat-label>
+              <input matInput placeholder="Loai-Banh" [(ngModel)]="ten" disabled>
+            </mat-form-field>
+
+            <mat-form-field class="So-Luong">
+              <mat-label class="title-input">Hình dạng</mat-label>
+              <!-- <input matInput placeholder="Hình dạng" [(ngModel)]="item.HinhDang"> -->
+              <mat-select placeholder="Hình dạng" (selectionChange)="changeClientHD($event.value)" [(ngModel)]="item.HinhDang">
+                <!-- <mat-option [value]="item.HinhDang" *ngFor="let item of KTs">{{item.TenKT}}</mat-option> -->
+                <mat-option value = "Vuong">Vuong</mat-option>
+                <mat-option value = "Tron">Tron</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div style="margin-left: 20px;">
+            <mat-label class="title-input" style="font-size: 13px;">Ảnh</mat-label>
+            <input  type="file" placeholder="Ảnh" (change)="addImg($event)">
+        </div>
+            <div style="margin-top: 10px;">
+                <mat-form-field class="Mo-Ta">
+                    <mat-label class="title-input">Mô tả</mat-label>
+                    <textarea  matInput placeholder="Mô tả bánh" [(ngModel)]="item.MoTa" style="height: 100px;"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+      <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+      
+      <div class="card-detail-bill">
+        <mat-card class="card-product">
+            <div style=" height: 30px;">
+                <mat-label class ="title-card">
+                    Nhà cung cấp
+                </mat-label>
+            </div>
+            <mat-divider></mat-divider>
+            <div>
+                <mat-accordion>
+                    <mat-expansion-panel class="header" hideToggle disabled="true">
+                      <mat-expansion-panel-header class="header-menu">
+                        <mat-panel-description style="color: #000000;" class="first">
+                          Mã NCC
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;" class="second">
+                          Tên NCC
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;" class="third">
+                          SĐT
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;" class="fourth">
+                          Email
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;" class="fifth">
+                            Địa chỉ
+                          </mat-panel-description>
+                          <mat-panel-description style="color: #000000;" class="delete">
+                        
+                          </mat-panel-description>
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                  
+                    <mat-expansion-panel disabled="true"  hideToggle *ngFor="let it of itemNCC" class="list-items">
+                      <mat-expansion-panel-header class="header-menu">
+                        <mat-panel-description style="color: #000000;align-items: center;" class="first">
+                          {{it.MaNCC}}
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;align-items: center;" class="second">
+                          {{it.TenNCC}}
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;align-items: center;" class="third">
+                            {{it.SDT}}
+                          </mat-panel-description>
+                        <mat-panel-description style="color: #000000;align-items: center;" class="fourth">
+                            {{it.Email}}
+                          </mat-panel-description>
+                          <mat-panel-description style="color: #000000;align-items: center;" class="fifth">
+                            {{it.DiaChi}} {{it.Phuong}} {{it.Phuong}} {{it.Quan}} {{it.ThanhPho}}
+                          </mat-panel-description>
+                      </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+            </div>
+        </mat-card>
+    </div>
+
+    <div class="card-detail-bill">
+      <mat-card class="card-product">
+          <div style=" height: 30px;">
+              <mat-label class ="title-card">
+                  Kích thước bánh
+              </mat-label>
+          </div>
+          <mat-divider></mat-divider>
+          <div>
+              <mat-accordion>
+                  <mat-expansion-panel class="header" hideToggle disabled="true">
+                    <mat-expansion-panel-header class="header-menu">
+                      <mat-panel-description style="color: #000000;" class="first">
+                        Mã KT
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;" >
+                        Kích thước
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;" >
+                        NSX
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;" >
+                        HSD
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;" >
+                        Trạng thái
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;">
+                        Số lượng
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;">
+                        Giá nhập
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;">
+                        Giá bán
+                      </mat-panel-description>
+                      <!-- <mat-panel-description style="color: #000000;" class="delete">
+                       
+                      </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                  </mat-expansion-panel>
+                
+                  <mat-expansion-panel disabled="true"  hideToggle *ngFor="let it of itemHSD" class="list-items">
+                    <mat-expansion-panel-header class="header-menu">
+                      <mat-panel-description style="color: #000000;align-items: center;" class="first">
+                        {{it.MaKT}}
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;align-items: center;" >
+                        {{it.TenKT}}
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;align-items: center;" >
+                          {{it.NSX | date:"dd/MM/Y"}}
+                        </mat-panel-description>
+                      <mat-panel-description style="color: #000000;align-items: center;" >
+                          {{it.HSD | date:"dd/MM/Y"}}
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #ff0000;align-items: center;" >
+                          {{it.TinhTrang}}
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;align-items: center;" >
+                          {{it.SL}}
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;align-items: center;" >
+                          {{it.DonGiaNhap | DonVi}}
+                        </mat-panel-description>
+                        <mat-panel-description style="color: #000000;align-items: center;" >
+                          {{it.DonGiaBan | DonVi}}
+                        </mat-panel-description>
+                        <!-- <mat-panel-description style="color: #000000;align-items: center;" class="delete" (click)="xoaHSD(it.MaKT_Banh,it.NSX,it.HSD)">
+                          <mat-icon>clear</mat-icon>
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                  </mat-expansion-panel>
+                </mat-accordion>
+          </div>
+      </mat-card>
+  </div>
+      <div>
+        <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="suaBanh(item.MaBanh,item.TenBanh,ten,item.AnhSP,item.HinhDang,item.MoTa)">Cập nhật</button>
+        <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="deleteBanh(item.MaBanh)">Xóa</button>
+      </div>
+      
+</div>

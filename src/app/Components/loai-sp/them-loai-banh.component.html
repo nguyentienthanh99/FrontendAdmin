@@ -1,0 +1,25 @@
+<div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Tên loại</mat-label>
+            <input matInput placeholder="Tên loại" [(ngModel)]="LoaiBanh.TenLoaiBanh" [formControl]="TenLoai" required>
+            <mat-error *ngIf="TenLoai.invalid">{{mesErr}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+            <mat-label class="title-input" >Ảnh loại</mat-label>
+            <input type="file" placeholder="Ảnh loại" (change)="addImg($event)">
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Mô tả</mat-label>
+            <textarea class="Text-a" matInput type="text" maxlength="250" placeholder="Mô tả" disabled="false" [(ngModel)]="LoaiBanh.MoTa"></textarea>
+        </mat-form-field>
+    </div>
+
+
+</div>
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="ThemLoaiBanh(LoaiBanh.TenLoaiBanh,LoaiBanh.AnhLoai,LoaiBanh.MoTa)">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="closePop()">Thoát</button>
+  </div>

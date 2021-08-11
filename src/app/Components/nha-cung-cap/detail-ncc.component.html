@@ -1,0 +1,40 @@
+<div>
+    
+    <mat-form-field >
+        <mat-label class="title-input">Tên nhà cung cấp</mat-label>
+        <input matInput placeholder="Tên nhà cung cấp" [(ngModel)]="detailNCC.TenNCC" [formControl]="Empty" required>
+        <mat-error *ngIf="Empty.invalid">{{mesErr}}</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input" >SĐT</mat-label>
+        <input matInput placeholder="SĐT" type="number" [(ngModel)]="detailNCC.SDT" [formControl]="EmptySDT" required>
+        <mat-error *ngIf="EmptySDT.invalid">{{mesErr1}}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="margin-top: 20px;">
+        <mat-label class="title-input">Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="detailNCC.Email" [formControl]="EmptyEmail" required>
+        <mat-error *ngIf="EmptyEmail.invalid">{{mesErr2}}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="margin-top: 20px;">
+        <mat-label class="title-input" >Dia chỉ</mat-label>
+        <input matInput placeholder="Dia chỉ" [(ngModel)]="detailNCC.DiaChi">
+    </mat-form-field>
+    <mat-form-field style="margin-top: 20px;">
+        <mat-label class="title-input">Phường</mat-label>
+        <input matInput placeholder="Phường" [(ngModel)]="detailNCC.Phuong">
+    </mat-form-field>
+    <mat-form-field style="margin-top: 20px;">
+        <mat-label class="title-input" >Quận</mat-label>
+        <input matInput placeholder="Quận" [(ngModel)]="detailNCC.Quan">
+    </mat-form-field>
+    <mat-form-field style="margin-top: 20px;">
+        <mat-label class="title-input">Thành phố</mat-label>
+        <input matInput placeholder="Thành phố" [(ngModel)]="detailNCC.ThanhPho">
+    </mat-form-field>
+
+</div>
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="updateNCC(detailNCC.MaNCC,detailNCC.TenNCC,detailNCC.SDT,detailNCC.Email,detailNCC.DiaChi,detailNCC.Phuong,detailNCC.Quan,detailNCC.ThanhPho)">{{CapNhat}}</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="deleteNCC(detailNCC.MaNCC)">{{Xoa}}</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="closePop()">Thoát</button>
+  </div>

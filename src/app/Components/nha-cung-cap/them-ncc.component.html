@@ -1,0 +1,40 @@
+<div>
+    
+    <mat-form-field >
+        <mat-label class="title-input">Tên nhà cung cấp</mat-label>
+        <input matInput placeholder="Tên nhà cung cấp" [(ngModel)]="NCCThem.TenNCC" [formControl]="Empty" required>
+        <mat-error *ngIf="Empty.invalid">{{mesErr}}</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input" >SĐT</mat-label>
+        <input matInput placeholder="SĐT" type="number" [(ngModel)]="NCCThem.SDT" [formControl]="EmptySDT" required>
+        <mat-error *ngIf="EmptySDT.invalid">{{mesErr1}}</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input">Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="NCCThem.Email" [formControl]="EmptyEmail" required>
+        <mat-error *ngIf="EmptyEmail.invalid">{{mesErr2}}</mat-error>
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input" >Dia chỉ</mat-label>
+        <input matInput placeholder="Dia chỉ" [(ngModel)]="NCCThem.DiaChi">
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input">Phường</mat-label>
+        <input matInput placeholder="Phường" [(ngModel)]="NCCThem.Phuong">
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input" >Quận</mat-label>
+        <input matInput placeholder="Quận" [(ngModel)]="NCCThem.Quan">
+    </mat-form-field>
+    <mat-form-field >
+        <mat-label class="title-input">Thành phố</mat-label>
+        <input matInput placeholder="Thành phố" [(ngModel)]="NCCThem.ThanhPho">
+    </mat-form-field>
+
+</div>
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="themNCC(NCCThem.TenNCC,NCCThem.SDT,NCCThem.Email,NCCThem.DiaChi,NCCThem.Phuong,NCCThem.Quan,NCCThem.ThanhPho)">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="close()">Hủy</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="closePop()">Thoát</button>
+  </div>

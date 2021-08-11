@@ -1,0 +1,135 @@
+<div class="all">
+    <div class="header-detail left">
+        <mat-label style="margin-left: 20px; font-size: 20px;color: #a191ff;">
+            {{KhuyenMai.TieuDe}} (#{{KhuyenMai.MaKM}})
+        </mat-label>
+    </div>
+    <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+    
+    <div>
+        <mat-card class="card-user">
+          <div>
+            <img [src]="KhuyenMai.AnhKM" alt="" class="Anh">
+          </div>
+            <div style="margin-top: 20px;">
+                <mat-form-field >
+                    <mat-label class="title-input">Mã khuyến mãi</mat-label>
+                    <input matInput type="text" placeholder="Mã khuyến mãi" [(ngModel)]="KhuyenMai.MaKM" disabled>
+                </mat-form-field>
+                <mat-form-field class="text-box" style="width: 583px;">
+                    <mat-label class="title-input">Tiêu đề</mat-label>
+                    <input matInput type="text" placeholder="Tiêu đề" [(ngModel)]="KhuyenMai.TieuDe">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field >
+                    <mat-label class="title-input">Khuyến mãi</mat-label>
+                    <div style="display: flex;">
+                        <input matInput type="number" placeholder="Mã khuyến mãi" [(ngModel)]="KhuyenMai.GiaTri">
+                        <mat-label [matMenuTriggerFor]="LoaiKM" matSuffix *ngIf="checkLoaiKM">%</mat-label>
+                        <span [matMenuTriggerFor]="LoaiKM" matSuffix *ngIf="!checkLoaiKM" style="cursor: pointer;">đ</span >
+                          <mat-menu #LoaiKM="matMenu">
+                            <button mat-menu-item (click)="phanTram()">%</button>
+                            <button mat-menu-item (click)="tien()">Tiền</button>
+                          </mat-menu>
+                    </div>
+                </mat-form-field>
+                <mat-form-field class="text-box">
+                    <mat-label class="title-input">Bắt đầu</mat-label>
+                    <input matInput type="date" placeholder="Mã khuyến mãi" [(ngModel)]="KhuyenMai.ThoiGianBatDau">
+                </mat-form-field>
+                <mat-form-field class="text-box">
+                    <mat-label class="title-input">Kết thúc</mat-label>
+                    <input matInput type="date" placeholder="Mã khuyến mãi" [(ngModel)]="KhuyenMai.ThoiGianKetThuc">
+                </mat-form-field>
+
+                <mat-form-field class="text-box">
+                    <mat-label class="title-input">Ngày tạo</mat-label>
+                    <input matInput type="date" placeholder="Mã khuyến mãi" [(ngModel)]="KhuyenMai.created_at" disabled>
+                </mat-form-field>
+
+            </div>
+            <div>
+                <mat-form-field style="width: 780px;">
+                    <mat-label class="title-input">Mô tả</mat-label>
+                    <textarea matInput type="text" placeholder="Mã khuyến mãi" style="height: 100px;" [(ngModel)]="KhuyenMai.MoTa"></textarea>
+                </mat-form-field>
+            </div>
+        </mat-card>
+        <mat-card>
+            <mat-accordion>
+                <mat-expansion-panel class="header" hideToggle disabled="true">
+                  <mat-expansion-panel-header class="header-menu">
+                    <mat-panel-description style="color: #000000;" >
+                      Mã
+                    </mat-panel-description>
+                    <mat-panel-description style="color: #000000;" >
+                      Tên bánh
+                    </mat-panel-description>
+                    <mat-panel-description style="color: #000000;" >
+                      Loại bánh
+                    </mat-panel-description>
+                    <!-- <mat-panel-description style="color: #000000;" >
+                      Số lượng
+                    </mat-panel-description> -->
+                  </mat-expansion-panel-header>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel disabled="true"  hideToggle *ngFor="let item of Banhs" class="list-items">
+                  <mat-expansion-panel-header class="header-menu">
+                    <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaBanh)">
+                      {{item.MaBanh}}
+                    </mat-panel-description>
+                    <mat-panel-description style="color: #000000;"  (click)="GoToDetail(item.MaBanh)" >
+                      {{item.TenBanh}}
+                    </mat-panel-description>
+                    <mat-panel-description style="color: #000000;"  (click)="GoToDetail(item.MaBanh)" >
+                      {{item.TenLoaiBanh}}
+                    </mat-panel-description>
+                    <!-- <mat-panel-description style="color: #000000;" routerLink= "['all-cake/detail-cake',item.ma]" (click)="GoToDetail(item.MaBanh)" >
+                      {{item.SL}}
+                    </mat-panel-description> -->
+                  </mat-expansion-panel-header>
+                  <mat-panel-description style="color: #000000;align-items: center;" class="delete">
+                    <mat-icon>clear</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel hideToggle disabled="true" [ngClass]="{'displayNone': !checkClickButtonAddKT}">
+                    <mat-expansion-panel-header class="header-menu">
+                      <mat-panel-description style="color: #000000;display: flex;align-items: center;">
+                            <mat-label>Chọn bánh</mat-label>
+                            <mat-select class="select-cake" (selectionChange)="changeClient($event.value)">
+                                <mat-option *ngFor="let item of BanhChuaKM" [value]="item.MaBanh"> {{item.TenBanh}}</mat-option>
+                            </mat-select>
+                            <input type="text" matInput style="width: 80%;" placeholder="Mã bánh" disabled class="select-cake" [(ngModel)]="idBanhChuaKM">
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                  </mat-expansion-panel>
+
+                  <mat-expansion-panel *ngIf="CheckHan" class="header" hideToggle disabled="true" [ngClass]="{'displayNone': checkClickButtonAddKT}" (click)="AddKT()">
+                    <mat-expansion-panel-header class="header-menu">
+                      <mat-panel-description style="color: #000000;" class="button-add">
+                        <mat-icon [ngClass]="{'displayNone': checkClickButtonAddKT}">add</mat-icon>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel class="header" hideToggle disabled="true" [ngClass]="{'displayNone': !checkClickButtonAddKT}">
+                    <mat-expansion-panel-header class="header-menu">
+                      <mat-panel-description style="color: #000000;" class="button-add" (click)="themBanhVaoKM(id)" >
+                        <mat-icon>done</mat-icon>
+                      </mat-panel-description>
+                      <mat-panel-description style="color: #000000;" class="button-add" (click)="CloseAddKT()">
+                        <mat-icon>clear</mat-icon>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                  </mat-expansion-panel>
+                
+              </mat-accordion>
+        </mat-card>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="suaKM(KhuyenMai.MaKM,KhuyenMai.TieuDe,KhuyenMai.GiaTri,KhuyenMai.LoaiKM,KhuyenMai.ThoiGianBatDau,KhuyenMai.ThoiGianKetThuc,KhuyenMai.MoTa)">Cập nhật</button>
+        <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="xoaKM(KhuyenMai.MaKM)">Xóa</button>
+      </div>
+</div>

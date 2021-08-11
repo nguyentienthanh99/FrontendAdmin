@@ -1,0 +1,94 @@
+<!-- <mat-selection-list #shoes>
+    <mat-list-option MatO #allSelected (click)="checkAllSelected = !checkAllSelected">
+      <div matLine style="display: flex; align-items: center;justify-content: space-between;margin-left: 50px;">
+        <span>Mã</span>
+        <span>Ngày tạo</span>
+        <span>Khách hàng</span>
+        <span>Thanh toán</span>
+        <span>Tổng tiền</span>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-option >
+    <mat-list-option  *ngFor="let item of DonHang" [selected]="checkAllSelected">
+      <mat-icon matListIcon >arrow_right</mat-icon>
+        <div matLine style="display: flex; align-items: center;justify-content: space-between;" >
+          <span>{{item.ma}}</span>
+          <span>{{item.NgayTao}}</span>
+          <span>{{item.KhachHang}}</span>
+          <span>{{item.ThanhToan}}</span>
+          <span>{{item.TongTien}}</span>
+        </div>
+      <mat-divider></mat-divider>
+    </mat-list-option>
+  </mat-selection-list> -->
+  <mat-accordion >
+    <mat-expansion-panel class="header" hideToggle disabled="true">
+      <mat-expansion-panel-header class="header-menu">
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected" (change)="setAll($event.checked)"></mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" >
+          Mã HD
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Mã khách hàng
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Tên khách hàng
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Ngày tạo hóa đơn
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Giao hàng
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Thanh toán
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Xác thực
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel disabled="true" class="menu list-items" hideToggle *ngFor="let item of task.ListBill | paginate: { itemsPerPage: 10, currentPage: page }" value="item.ma">
+      <mat-expansion-panel-header>
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected">
+            
+          </mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaHD)">
+          {{item.MaHD}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;"  (click)="GoToDetail(item.MaHD)">
+          {{item.MaKH}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaHD)">
+          {{item.TenKH | VietHoa}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaHD)">
+          {{item.NgayTaoHD | date:"dd/MM/Y"}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaHD)">
+          {{item.TrangThaiGiaoHang | CheckBol}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaHD)">
+          {{item.TrangThaiThanhToan | CheckBol}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaHD)">
+          {{item.TrangThaiXacThuc | CheckBol}}
+        </mat-panel-description>
+        
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <div style="display: flex;justify-content: center;">
+      <pagination-controls
+          previousLabel="Trang trước"
+          nextLabel="Trang sau"
+          [responsive]="true"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+    </div>
+  </mat-accordion>
+  

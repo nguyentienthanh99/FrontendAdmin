@@ -1,0 +1,39 @@
+<div class="all">
+    <mat-label style="margin-left: 20px; font-size: 20px;color: #a191ff;">
+        {{item.TenLoaiBanh}} #{{item.MaLoaiBanh}}
+    </mat-label>
+    <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+    <div style="display: flex;align-items: center;">
+        <img class="Anh" [src]="item.AnhLoai" alt=""> 
+        <input type="file" (change)="addImg($event)">
+    </div>
+    <div class="example-form">
+        <div style="display: flex;">
+            <mat-form-field class="Ma-Banh first">
+                <mat-label class="title-input">Mã loại</mat-label>
+                <input matInput type="text" placeholder="Mã bánh" [(ngModel)]="item.MaLoaiBanh" disabled>
+            </mat-form-field>
+    
+            <mat-form-field class="Ten-Banh">
+              <mat-label class="title-input">Loại bánh</mat-label>
+              <input matInput placeholder="Tên loại bánh" [(ngModel)]="item.TenLoaiBanh">
+              <button mat-button *ngIf="item.TenLoaiBanh" matSuffix mat-icon-button aria-label="Clear" (click)="item.TenLoaiBanh='khác'">
+                <mat-icon>close</mat-icon>
+            </button>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="Mo-Ta">
+                <mat-label class="title-input">Mô tả</mat-label>
+                <textarea  matInput placeholder="Mô tả bánh" [(ngModel)]="item.MoTa" style="height: 100px;"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+      <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+
+      <div>
+        <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="updateLoaiBanh(item.MaLoaiBanh,item.TenLoaiBanh,item.AnhLoai,item.MoTa)">Cập nhật</button>
+        <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="XoaLoaiBanh(item.MaLoaiBanh)">Xóa</button>
+      </div>
+      
+</div>

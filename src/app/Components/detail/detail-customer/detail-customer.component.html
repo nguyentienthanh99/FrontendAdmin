@@ -1,0 +1,203 @@
+<div class="all">
+    <div class="header-detail left">
+        <div>
+            <!-- <img class="Anh" [src]="item.Anh" alt=""> -->
+            <img class="Anh" [src]="item.Anh" alt="">
+            <!-- <img class="Anh" src="src\assets\default\default-user.png" alt=""> -->
+        </div>
+        <mat-label style="margin-left: 20px; font-size: 20px;color: #a191ff;">
+            {{item.TenKH}} (#{{item.MaKH}}) 
+        </mat-label>
+    </div>
+    <div class="left header-content">
+        <div class="count-bill">
+            <div id="title-count-bill">
+                <mat-label>Số đơn đã đặt</mat-label>
+            </div>
+            <div id="data-count-bill">
+                {{this.countBill.SoHoaDon | checkSo}}
+            </div>
+        </div>
+        <!-- <div class="count-bill">
+            <div id="title-count-bill">
+                <mat-label>Tổng tiền tích lũy</mat-label>
+            </div>
+            <div id="data-count-bill">
+                {{Tong | DonVi}} ₫
+            </div>
+        </div> -->
+        <div class="count-bill">
+            <div id="title-count-bill">
+                <mat-label>Đơn đặt gần nhất</mat-label>
+            </div>
+            <div id="data-count-bill">
+                #{{billGanNhat.MaHD | checkSo}}
+            </div>
+        </div>
+    </div>
+    <mat-divider style="margin-top: 20px; font-size: 20px;"></mat-divider>
+
+    <mat-card class="card-product">
+        <div style=" height: 30px;">
+            <mat-label class ="title-card">
+                Thông tin
+            </mat-label>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="info-user">
+            <div class="info-item">
+                <div class="title-item">
+                    <mat-label >Email  </mat-label> 
+                </div>
+                <div class="title-item1">
+                    <mat-label>:</mat-label> 
+                </div>
+                <div>
+                    <mat-label>{{item.Email}}</mat-label>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="title-item">
+                    <mat-label >Số điện thoại </mat-label> 
+                </div>
+                <div class="title-item1">
+                    <mat-label>:</mat-label>
+                </div> 
+                <div>
+                    <mat-label>{{item.SDT}}</mat-label>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="title-item">
+                    <mat-label >Giới tính </mat-label> 
+                </div>
+                <div class="title-item1">
+                    <mat-label>:</mat-label>
+                </div> 
+                <div>
+                    <mat-label>{{item.GioiTinh}}</mat-label>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="title-item">
+                    <mat-label >Ngày sinh </mat-label> 
+                </div>
+                <div class="title-item1">
+                    <mat-label>:</mat-label>
+                </div> 
+                <div>
+                    <mat-label *ngIf="checkText">{{item.NgaySinh | date:"dd/MM/Y"}}</mat-label>
+                    <mat-label *ngIf="!checkText">{{messNS}}</mat-label>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="title-item">
+                    <mat-label >Địa chỉ</mat-label> 
+                </div>
+                <div class="title-item1">
+                    <mat-label>:</mat-label>
+                </div> 
+                <div>
+                    <mat-label>{{item.DiaChi}}, {{item.Phuong}}, {{item.Quan}}, {{item.ThanhPho}}</mat-label>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+    <mat-card class="card-product card2">
+        <div style=" height: 30px;">
+            <mat-label class ="title-card">
+                Đơn hàng
+            </mat-label>
+        </div>
+        <mat-divider></mat-divider>
+        <div *ngIf="checkListBill">
+            <mat-accordion>
+                <mat-expansion-panel class="header" hideToggle disabled="true">
+                  <mat-expansion-panel-header class="header-menu">
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Mã
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Ngày Tạo
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Giao hàng
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Thanh toán
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Xác thực
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel disabled="true" class="menu list-items" hideToggle *ngFor="let it of listBill | paginate: { itemsPerPage: 10, currentPage: page }" value="it.ma">
+                  <mat-expansion-panel-header>
+                     <mat-panel-description class="list-item" style="color: #000000;" routerLink="detail-bill" (click)="GoToDetail(it.MaHD)">
+                      {{it.MaHD}}
+                    </mat-panel-description>
+                    <mat-panel-description class="list-item" style="color: #000000;" routerLink="detail-bill" (click)="GoToDetail(it.MaHD)">
+                        {{it.NgayTaoHD | date:"dd/MM/Y"}}
+                      </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" routerLink="detail-bill" (click)="GoToDetail(it.MaHD)">
+                      {{it.TrangThaiGiaoHang | CheckBol}}
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" routerLink="detail-bill" (click)="GoToDetail(it.MaHD)">
+                      {{it.TrangThaiThanhToan | CheckBol}}
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" routerLink="detail-bill" (click)="GoToDetail(it.MaHD)">
+                      {{it.TrangThaiXacThuc | CheckBol}}
+                    </mat-panel-description>
+                     
+                  </mat-expansion-panel-header>
+                  
+                </mat-expansion-panel>
+                <div style="display: flex;justify-content: center;">
+                    <pagination-controls
+                        previousLabel="Trang trước"
+                        nextLabel="Trang sau"
+                        [responsive]="true"
+                        (pageChange)="page = $event"
+                      ></pagination-controls>
+                  </div>
+              </mat-accordion>
+        </div>
+
+        <div *ngIf="!checkListBill">
+            <mat-accordion>
+                <mat-expansion-panel class="header" hideToggle disabled="true">
+                  <mat-expansion-panel-header class="header-menu">
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Mã
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Ngày Tạo
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Giao hàng
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Thanh toán
+                    </mat-panel-description>
+                     <mat-panel-description class="list-item" style="color: #000000;" >
+                      Xác thực
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                </mat-expansion-panel>
+              
+                <mat-expansion-panel disabled="true" class="menu list-items" hideToggle value="it.ma">
+                  <mat-expansion-panel-header>
+                     <mat-panel-description class="list-item" style="color: #9b9b9b;display: flex;justify-content: center;">
+                        {{mess}}
+                    </mat-panel-description>
+                     
+                  </mat-expansion-panel-header>
+                </mat-expansion-panel>
+                
+              </mat-accordion>
+              
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,42 @@
+<div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Tên bánh</mat-label>
+            <input matInput placeholder="Tên bánh" [(ngModel)]="Banh.TenBanh">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input" >Loại bánh</mat-label>
+            <mat-select placeholder="Loại bánh" (selectionChange)="changeClient($event.value)">
+                <mat-option *ngFor="let item of ListLoaiBanh" [value]="item.MaLoaiBanh">{{item.TenLoaiBanh}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Ảnh bánh</mat-label>
+            <input matInput placeholder="Ảnh bánh" [(ngModel)]="Banh.AnhSP">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-label class="title-input">Hình dạng</mat-label>
+        <mat-select placeholder="Hình dạng" [(ngModel)]="Banh.HinhDang">
+            <mat-option value="Vuong">Vuông</mat-option>
+            <mat-option value="Tron">Tròn</mat-option>
+        </mat-select>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Mô tả</mat-label>
+            <textarea class="Text-a" matInput type="text" maxlength="250" placeholder="Mô tả" disabled="false"></textarea>
+        </mat-form-field>
+    </div>
+</div>
+<!-- <div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" [ngClass]="{'none': !next}" (click)="Next()">Xác nhận</button>
+</div> -->
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="ThemBanh(Banh.TenBanh,MaLoaiBanhev,Banh.AnhSP,Banh.HinhDang,Banh.MoTa)">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="closePop()">Thoát</button>
+</div>

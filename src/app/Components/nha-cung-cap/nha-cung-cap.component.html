@@ -1,0 +1,62 @@
+<mat-accordion>
+      <mat-expansion-panel class="header" hideToggle disabled="true">
+        <mat-expansion-panel-header class="header-menu">
+          <!-- <mat-panel-title>
+            <mat-checkbox [checked]="checkAllSelected" (change)="setAll($event.checked)"></mat-checkbox>
+          </mat-panel-title> -->
+          <mat-panel-description style="color: #000000;" class="first">
+            Mã
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="second">
+            Tên NCC
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="third">
+            SĐT
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="four">
+            Email
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="fifti">
+            Địa chỉ
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel disabled="true" class="menu list-items" hideToggle *ngFor="let item of task.ListNhaCungCap |  paginate: { itemsPerPage: 10, currentPage: page }" value="item.MaNCC" >
+        <mat-expansion-panel-header>
+          <!-- <mat-panel-title>
+            <mat-checkbox [checked]="checkAllSelected" (click)="check(item.MaNCC,item.completed)">
+              
+            </mat-checkbox>
+          </mat-panel-title> -->
+          <mat-panel-description style="color: #000000;" class="first" (click)="openDialog(item.MaNCC)">
+            {{item.MaNCC}}
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="second" (click)="openDialog(item.MaNCC)">
+            {{item.TenNCC}}
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="third" (click)="openDialog(item.MaNCC)">
+            {{item.SDT}}
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="four" (click)="openDialog(item.MaNCC)">
+            {{item.Email}}
+          </mat-panel-description>
+          <mat-panel-description style="color: #000000;" class="fifti" (click)="openDialog(item.MaNCC)">
+            {{item.DiaChi}},{{item.Phuong}}, {{item.Quan}},{{item.ThanhPho}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <div style="display: flex;justify-content: center;">
+        <pagination-controls
+            previousLabel="Trang trước"
+            nextLabel="Trang sau"
+            [responsive]="true"
+            (pageChange)="page = $event"
+          ></pagination-controls>
+      </div>
+      <mat-expansion-panel class="menu" disabled="true">
+        <mat-expansion-panel-header style="padding-left: 0px;display: flex;align-items: center;">
+          <button mat-raised-button color="warn" (click)="openDialog1()">Thêm</button>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>

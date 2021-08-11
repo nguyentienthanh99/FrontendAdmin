@@ -1,0 +1,41 @@
+<div class="header" >
+    <div class="search centre">
+        
+    </div>
+    <div class="user centre">
+        <img [src]="admins.Anh" alt="" style="height: 50px;min-width: 50px;max-width: 50px; border: 0.1875em solid #ffffff;border-radius: 50%;-moz-border-radius:50%;-webkit-border-radius:50%;">
+        <div class="user-login">
+            <p id="name">{{admins.TenAD}}</p>
+            <p class="login" (click)="logOut()">Đăng xuất</p>
+        </div>
+    </div>
+
+</div>
+<div style="height: 100px;">
+
+</div>
+<div style="display: flex;justify-content: center;">
+    <div style="min-width: 167px;"></div>
+    <router-outlet></router-outlet>
+</div>
+
+<!-- <input matInput [formControl]="myControlLoaiBanh" [matAutocomplete]="auto" placeholder="Loại sản phẩm" class="LoaiSP_input">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptionsLoai | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        <input  type="text" 
+                placeholder="Tên bánh" 
+                aria-label="Number" 
+                matInput 
+                [formControl]="myControlBanh" 
+                [matAutocomplete]="auto1" class="TenSP_input">
+        <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptionsBanh | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+        <button mat-button style="padding-top: 2px;padding-bottom: 2px;">
+            <mat-icon matSuffix>search</mat-icon>
+        </button> -->

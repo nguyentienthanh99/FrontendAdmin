@@ -1,0 +1,53 @@
+
+<div style="width: 1050px;margin-top: 30px;margin-bottom: 30px;">
+    <div style="margin-left: 50px;">
+        <div>
+            <mat-form-field>
+                <mat-label class="title-input">Thời gian</mat-label>
+                <input matInput [matDatepicker]="picker" (ngModelChange)="getBaoCaoHoaDon($event)" (ngModelChange)="getBaoCaoHoaDonNhap($event)" [(ngModel)]="NgayHienTai">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <div class="item-report">
+                <mat-label class="title-report">Tổng doanh thu </mat-label> <mat-label style="width: 100px;"> :    {{TongKM | DonVi}}</mat-label>
+            </div>
+            <div class="item-report">
+                <mat-label class="title-report">Tổng vốn đầu tư </mat-label> <mat-label style="width: 100px;">:    {{TongNhap | DonVi}}</mat-label>
+            </div>
+            <div class="item-report">
+                <mat-label class="title-report">Tổng thiệt hại (Bánh hết hạn) </mat-label> <mat-label style="width: 100px;">:    {{TongHetHan | DonVi}}</mat-label>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-left: 33px;">
+    <button mat-button (click)="click()">Thống kê năm</button>
+    <!-- <div>
+        <mat-form-field >
+            <mat-label class="title-input" >Loại bánh</mat-label>
+            <mat-select placeholder="Loại bánh" (selectionChange)="changeClient($event.value)">
+                <mat-option *ngFor="let item of ListNam" [value]="item.MaLoaiBanh" [disabled]="disableTTBanh">{{item.TenLoaiBanh}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+    </div> -->
+</div>
+<div (click)="click()" *ngIf="checkTK">
+    <ngx-charts-line-chart style="padding: 200px;"
+        [results]="check1"
+        [view]="[1000,700]"
+        [scheme]="colorScheme"
+        [legend]="legend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [timeline]="timeline"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)">
+        </ngx-charts-line-chart>
+</div>

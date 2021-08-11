@@ -1,0 +1,95 @@
+.all{
+    //width: 1112px;
+    width: 1112px; 
+    // margin-left: 192px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.left{
+    margin-left: 20px;
+}
+
+.header-detail{
+    display: flex;
+    align-items: center;
+}
+
+.Anh{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #fa9600;
+}
+
+.header-content{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.count-bill{
+    color: #a191ff;
+    font-size: 15px;
+    margin-left: 75px;
+    #data-count-bill{
+        margin-top: 10px;
+        // margin-left: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.header{
+    background-color: #d4d4d4;
+  }
+
+.title-card{
+    font-size: 15px;
+    color: #ff3c3c; 
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.card-product{
+    width: 100%;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+}
+.card2{
+    margin-top: 20px;
+}
+
+.list-item{
+    width: 105px;
+  }
+  
+  .list-items:hover{
+    background-color: #d4d4d4;
+  }
+
+.info-user{
+    margin-left: 20px;
+    
+    padding-bottom: 20px;
+}
+
+.info-item{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.title-item{
+    min-width: 100px;
+    color: #a191ff;
+}
+.title-item1{
+    min-width: 20px;
+}
+
+.checkText{
+    display: none;
+}

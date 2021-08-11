@@ -1,0 +1,39 @@
+<div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Tên đăng nhập</mat-label>
+            <input matInput placeholder="Tên đăng nhập" [(ngModel)]="admin.TenAD" [formControl]="EmptyTen" required>
+            <mat-error *ngIf="EmptyTen.hasError('minlength')">Tên ít nhất 6 ký tự</mat-error>
+            <mat-error *ngIf="EmptyTen.hasError('required')"><p>Chưa nhập tên đăng nhập</p></mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+            <mat-label class="title-input" >Chọn ảnh đại diện</mat-label>
+            <input type="file" placeholder="Ảnh loại" (change)="addImg($event)">
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Mật khẩu</mat-label>
+            <input [type]="typeInput" matInput placeholder="Mật khẩu" [(ngModel)]="admin.MatKhau" [formControl]="EmptyPass" required>
+            <mat-error *ngIf="EmptyPass.hasError('minlength')">Mật khẩu ít nhất 6 ký tự</mat-error>
+            <mat-error *ngIf="EmptyPass.hasError('required')"><p>Chưa nhập mật khẩu</p></mat-error>
+            <mat-icon *ngIf="itemCheckPass" (click)="checkPas()" matSuffix style="cursor:pointer;">visibility_off</mat-icon>
+            <mat-icon *ngIf="!itemCheckPass" (click)="checkPas()" matSuffix style="cursor:pointer;">remove_red_eye</mat-icon>
+        </mat-form-field>
+    </div>
+    <!-- <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Nhập lại mật khẩu</mat-label>
+            <input [type]="typeInputLai" matInput placeholder="Mật khẩu" [(ngModel)]="passLai">
+            <mat-error>Sai mật khẩu</mat-error>
+            <mat-icon *ngIf="itemCheckPassLai" (click)="checkPasLai()" matSuffix style="cursor:pointer;">visibility_off</mat-icon>
+            <mat-icon *ngIf="!itemCheckPassLai" (click)="checkPasLai()" matSuffix style="cursor:pointer;">remove_red_eye</mat-icon>
+        </mat-form-field>
+    </div> -->
+
+
+</div>
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="themAD()">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="close()">Thoát</button>
+  </div>

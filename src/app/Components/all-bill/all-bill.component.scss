@@ -1,0 +1,42 @@
+// .header{
+//   background-color: #d4d4d4;
+// }
+// mat-accordion{
+//   overflow-x: auto;
+//   overflow-y: auto;
+// }
+// mat-expansion-panel{
+//   //width: 1112px;
+// width: 1173px;
+//   margin-left: 192px;
+// }
+
+// mat-panel-description{
+//   width: 100px;
+//   color: #000000;
+// }
+
+.header{
+  background-color: #d4d4d4;
+}
+mat-accordion{
+  width: fit-content;
+}
+mat-expansion-panel{
+  //width: 1112px;
+width: 1112px;
+  // margin-left: 12em;
+  // padding-left: 192px;
+}
+
+mat-panel-description{
+  width: 100px;
+}
+
+.list-items:hover{
+  background-color: #d4d4d4;
+}
+
+:host{
+  display: flex;
+}

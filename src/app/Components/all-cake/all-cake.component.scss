@@ -1,0 +1,41 @@
+
+.header{
+  background-color: #d4d4d4;
+}
+mat-accordion{
+  width: fit-content;
+}
+mat-expansion-panel{
+  // width: 1366px;
+  width: 1112px;
+  // width: 100%;
+  // margin-left: 12em;
+  // padding-left: 192px;
+}
+
+mat-panel-description{
+  width: 100px;
+}
+
+.list-items:hover{
+  background-color: #d4d4d4;
+}
+
+.demo-menu{
+  min-width: 192px;
+}
+
+// table {
+//   width: 1112px;
+// }
+// th{
+//   background-color: #d4d4d4;
+// }
+.title-input{
+  color: #ff0000;
+  font-size: 16px;
+}
+
+.none{
+  display: none;
+}

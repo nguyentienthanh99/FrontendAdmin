@@ -1,0 +1,53 @@
+<div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Tên khuyến mại</mat-label>
+            <input matInput placeholder="Tên loại" [(ngModel)]="item.TieuDe">
+        </mat-form-field>
+    </div>
+    <div>
+        <!-- <mat-form-field style="width: 100%;"> -->
+            <mat-label class="title-input">Ảnh khuyến mại</mat-label>
+            <input type="file" placeholder="Ảnh KM" (change)="addImg($event)">
+        <!-- </mat-form-field> -->
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;margin-top: 20px;">
+            <mat-label class="title-input">Giá trị</mat-label>
+            <input matInput placeholder="Giá trị" [(ngModel)]="item.GiaTri">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input" >Loại khuyến mại</mat-label>
+            <mat-select value="option2" (selectionChange)="changeClient($event.value)">
+                <mat-option value="%">%</mat-option>
+                <mat-option value="Tien">Tien</mat-option>
+              </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Ngày bắt đầu</mat-label>
+            <input matInput type="date" placeholder="Ngày bắt đầu" [(ngModel)]="item.ThoiGianBatDau">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Ngày kết thúc</mat-label>
+            <input matInput type="date" placeholder="Ngày kết thúc" [(ngModel)]="item.ThoiGianKetThuc">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 100%;">
+            <mat-label class="title-input">Mô tả</mat-label>
+            <textarea class="Text-a" matInput type="text" maxlength="250" placeholder="Mô tả" disabled="false" [(ngModel)]="item.MoTa"></textarea>
+        </mat-form-field>
+    </div>
+
+</div>
+
+<div>
+    <button mat-raised-button color="primary" style="margin-top: 20px;margin-left: 20px;" (click)="themKM(item.TieuDe,item.GiaTri,item.LoaiKM,item.ThoiGianBatDau,item.ThoiGianKetThuc,item.MoTa)">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-top: 20px;margin-left: 20px;" (click)="closePop()">Thoát</button>
+</div>

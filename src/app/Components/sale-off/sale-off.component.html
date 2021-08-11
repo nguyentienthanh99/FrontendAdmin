@@ -1,0 +1,73 @@
+<mat-accordion>
+    <mat-expansion-panel class="header" hideToggle disabled="true">
+      <mat-expansion-panel-header class="header-menu">
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected" (change)="setAll($event.checked)"></mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" >
+          Mã
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Tên KM
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Loại KM
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+          Ngày bắt đầu
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+            Ngày kết thúc
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" >
+            Ngày tạo
+        </mat-panel-description>
+        <!-- <mat-panel-description style="color: #000000;" >
+          Sản phẩm
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel disabled="true" class="list-items"  hideToggle *ngFor="let item of task.ListSaleOff |  paginate: { itemsPerPage: 10, currentPage: page }" value="item.MaKM">
+      <mat-expansion-panel-header class="header-menu" >
+        <!-- <mat-panel-title>
+          <mat-checkbox [checked]="checkAllSelected">
+            
+          </mat-checkbox>
+        </mat-panel-title> -->
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaKM)">
+          {{item.MaKM}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaKM)">
+          {{item.TieuDe | substring}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaKM)">
+          {{item.GiaTri | DonVi}} {{item.LoaiKM | LoaiKM}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaKM)">
+          <!-- {{item.ThoiGianBatDau | subDate}} -->
+          {{item.ThoiGianBatDau | subDate}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;;" (click)="GoToDetail(item.MaKM)">
+          {{item.ThoiGianKetThuc | subDate}}
+        </mat-panel-description>
+        <mat-panel-description style="color: #000000;" (click)="GoToDetail(item.MaKM)">
+          {{item.created_at | subDate}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <div style="display: flex;justify-content: center;">
+      <pagination-controls
+          previousLabel="Trang trước"
+          nextLabel="Trang sau"
+          [responsive]="true"
+          (pageChange)="page = $event"
+        ></pagination-controls>
+    </div>
+    <mat-expansion-panel class="menu" disabled="true">
+      <mat-expansion-panel-header style="padding-left: 0px;">
+        <button mat-raised-button color="warn" (click)="openDialog()">Thêm</button>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

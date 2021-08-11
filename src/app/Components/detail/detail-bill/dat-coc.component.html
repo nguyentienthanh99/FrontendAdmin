@@ -1,0 +1,7 @@
+<input matInput type="number" placeholder="Tên nhà cung cấp" [(ngModel)]="data.SoTienConLai" [formControl]="Empty" required>
+<mat-error *ngIf="Empty.invalid">{{mesErr}}</mat-error>
+
+<div style="margin-top: 20px;">
+    <button mat-raised-button color="primary" style="width: 100px;" (click)="datCoc(data.MaHD,data.SoTienConLai)">Xác nhận</button>
+    <button mat-raised-button color="warn" style="margin-left: 20px;" (click)="close()">Hủy</button>
+</div>

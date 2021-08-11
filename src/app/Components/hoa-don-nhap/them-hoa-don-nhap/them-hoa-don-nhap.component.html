@@ -1,0 +1,231 @@
+<div style="width: 1112px;">
+    <div style="width: 96%;margin-top: 20px;display: flex;">
+        <!-- <div>
+            <mat-form-field >
+                <mat-label class="title-input" >Người nhập</mat-label>
+                <mat-select placeholder="Nhà cung cấp" (selectionChange)="changeClientAD($event.value)" [disabled]="disabledAD">
+                    <mat-option *ngFor="let item of ListAD" [value]="item.MaAD">{{item.TenAD}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+        <div>
+            <mat-form-field >
+                <mat-label class="title-input" >Nhà cung cấp</mat-label>
+                <mat-select placeholder="Nhà cung cấp" (selectionChange)="changeClientNCC($event.value)" [disabled]="disabledNCC">
+                    <mat-option *ngFor="let item of ListNcc" [value]="item.MaNCC">{{item.TenNCC}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <!-- <div>
+            <mat-form-field >
+                <mat-label class="title-input">Phương thức thêm</mat-label>
+                <mat-select placeholder="Nhà cung cấp" (selectionChange)="changeClientPhuongThuc($event.value)" [disabled]="disabledPT">
+                    <mat-option value="1">Nhập bánh mới</mat-option>
+                    <mat-option value="2">Nhập thêm bánh đã có</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> -->
+        <div style="margin-left: 20px;">
+            <button mat-raised-button color="primary" [disabled]="disabledNext" (click)="taoPhieuNhap()"  >Tiếp tục</button>
+        </div>
+    </div>
+
+    <div *ngIf="CheckKieuBanh">
+        <mat-form-field >
+            <mat-label class="title-input">Phương thức thêm</mat-label>
+            <mat-select placeholder="Nhà cung cấp" (selectionChange)="changeClientPhuongThuc($event.value)" >
+                <mat-option value="1">Nhập bánh mới</mat-option>
+                <mat-option value="2">Nhập thêm bánh đã có</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <!-- *ngIf="checBanhMoi" -->
+    <div style="width: 96%;margin-top: 20px;" *ngIf="checBanhMoi">
+        <div class="title" >
+            <mat-label>Nhập thông tin bánh</mat-label>
+        </div>
+        <div style="display: flex;">
+            <div>
+                <mat-form-field >
+                    <mat-label class="title-input">Tên bánh</mat-label>
+                    <input matInput placeholder="Tên bánh" [(ngModel)]="Banh.TenBanh" [disabled]="disableTTBanh">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field >
+                    <mat-label class="title-input" >Loại bánh</mat-label>
+                    <mat-select placeholder="Loại bánh" (selectionChange)="changeClient($event.value)">
+                        <mat-option *ngFor="let item of ListLoaiBanh" [value]="item.MaLoaiBanh" [disabled]="disableTTBanh">{{item.TenLoaiBanh}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field >
+                    <mat-label class="title-input">Hình dạng</mat-label>
+                    <mat-select placeholder="Hình dạng" [(ngModel)]="Banh.HinhDang" [disabled]="disableTTBanh">
+                        <mat-option value="Vuong">Vuông</mat-option>
+                        <mat-option value="Tron">Tròn</mat-option>
+                      </mat-select>
+                </mat-form-field>
+            </div>
+           
+        </div>
+        <div style="margin-left: 20px;">
+            <!-- <mat-form-field> -->
+                <mat-label class="title-input">Ảnh bánh</mat-label>
+                <input type="file" (change)="addImg($event)" placeholder="Ảnh bánh" [(ngModel)]="Banh.AnhSP" [disabled]="disableTTBanh">
+            <!-- </mat-form-field> -->
+            
+            </div>
+        <div>
+            <mat-form-field  style="width: 880px;">
+                <mat-label class="title-input">Mô tả</mat-label>
+                <textarea class="Text-a" [(ngModel)]="Banh.MoTa" matInput type="text" maxlength="250" placeholder="Mô tả" [disabled]="disableTTBanh"></textarea>
+            </mat-form-field>
+        </div>
+        
+        
+        <div style="margin-left: 20px;">
+            <button mat-raised-button color="primary" (click)="themBanhMoi(Banh.TenBanh,MaLoaiBanhev,Banh.AnhSP,Banh.HinhDang,Banh.MoTa)" [disabled]="disableTTBanh">Tiếp tục</button>
+            <!-- <button mat-raised-button color="primary" (click)="sub()">check</button> -->
+        </div>
+    </div>
+    <div *ngIf="checkKT">
+        <mat-card class="card-product">
+            <div style=" height: 30px;">
+              <mat-label class ="title-card">
+                  Kích thước bánh
+              </mat-label>
+            </div>
+            <div style="display: flex;">
+                <div>
+                    <div>
+                        <mat-form-field >
+                            <mat-label class="title-input" >Kích thước</mat-label>
+                            <mat-select placeholder="Kích thước" (selectionChange)="changeClientKT($event.value)">
+                                <mat-option [value]="item.MaKT" *ngFor="let item of KTs">{{item.TenKT}}</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field >
+                            <mat-label class="title-input">Giá nhập</mat-label>
+                            <input type="number" matInput placeholder="Giá nhập" [(ngModel)]="KichThuocBanhMoi.DonGiaNhap">
+                        </mat-form-field>
+                
+                        <mat-form-field >
+                            <mat-label class="title-input">Giá bán</mat-label>
+                            <input type="number" matInput placeholder="Giá bán" [(ngModel)]="KichThuocBanhMoi.DonGiaBan">
+                        </mat-form-field>
+                
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <mat-form-field >
+                            <mat-label class="title-input">Ngày sản xuất</mat-label>
+                            <input type="date" matInput placeholder="Ngày sản xuất" [(ngModel)]="CTPNMoi.NSX">
+                        </mat-form-field>
+                
+                        <mat-form-field >
+                            <mat-label class="title-input">Hạn sử dụng</mat-label>
+                            <input type="date" matInput placeholder="Hạn sử dụng" [(ngModel)]="CTPNMoi.HSD">
+                        </mat-form-field>
+                
+                        <mat-form-field >
+                            <mat-label class="title-input">Số lượng</mat-label>
+                            <input type="number" matInput placeholder="Số lượng" [(ngModel)]="CTPNMoi.SL">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field >
+                        <mat-label class="title-input">Mô tả</mat-label>
+                        <textarea class="Text-a" matInput type="text" maxlength="250" placeholder="Mô tả" disabled="false" style="height: 80px;" [(ngModel)]="CTPNMoi.GhiChu"></textarea>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div style="margin-left: 20px;">
+                <button mat-raised-button color="primary" (click)="themKichThuocBanhMoi(KichThuocBanhMoi.DonGiaNhap,KichThuocBanhMoi.DonGiaBan,CTPNMoi.NSX,CTPNMoi.HSD,CTPNMoi.SL,CTPNMoi.GhiChu)">Thêm</button>
+                <button mat-raised-button color="warn" style="margin-left: 20px;" (click)="ThemBanhKhac()">Bánh mới</button>
+                <button mat-raised-button color="primary" style="margin-left: 20px;">Thoát</button>
+            </div>
+           
+        </mat-card>
+    </div>
+
+
+    <div style="width: 96%;margin-top: 20px;" *ngIf="checkBanhCu">
+        <div class="title" >
+            <mat-label>Chọn bánh</mat-label>
+        </div>
+        <div>
+            <mat-form-field >
+                <mat-label class="title-input" >Danh sách bánh</mat-label>
+                <mat-select placeholder="Loại bánh" (selectionChange)="changeClientListBanh($event.value)" [disabled]="checkKT">
+                    <mat-option *ngFor="let item of ListBanh" [value]="item.MaBanh">{{item.TenBanh}} #{{item.MaBanh}}</mat-option>
+                  </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf="checkKTBanhCu">
+        <mat-card class="card-product">
+            <div style=" height: 30px;">
+              <mat-label class ="title-card">
+                  Kích thước bánh
+              </mat-label>
+            </div>
+            <div style="display: flex;">
+                <div>
+                    <div>
+                        <mat-form-field >
+                            <mat-label class="title-input" >Kích thước</mat-label>
+                            <mat-select placeholder="Kích thước" (selectionChange)="changeClientKT($event.value)">
+                                <mat-option [value]="item.MaKT" *ngFor="let item of KTs">{{item.TenKT}}</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                        <mat-form-field >
+                            <mat-label class="title-input">Giá nhập</mat-label>
+                            <input type="number" matInput placeholder="Giá nhập" [(ngModel)]="KichThuocBanhMoi.DonGiaNhap">
+                        </mat-form-field>
+                
+                        <mat-form-field >
+                            <mat-label class="title-input">Giá bán</mat-label>
+                            <input type="number" matInput placeholder="Giá bán" [(ngModel)]="KichThuocBanhMoi.DonGiaBan">
+                        </mat-form-field>
+                
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <mat-form-field >
+                            <mat-label class="title-input">Ngày sản xuất</mat-label>
+                            <input type="date" matInput placeholder="Ngày sản xuất" [(ngModel)]="CTPNMoi.NSX">
+                        </mat-form-field>
+                
+                        <mat-form-field >
+                            <mat-label class="title-input">Hạn sử dụng</mat-label>
+                            <input type="date" matInput placeholder="Hạn sử dụng" [(ngModel)]="CTPNMoi.HSD">
+                        </mat-form-field>
+                
+                        <mat-form-field >
+                            <mat-label class="title-input">Số lượng</mat-label>
+                            <input type="number" matInput placeholder="Số lượng" [(ngModel)]="CTPNMoi.SL">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field >
+                        <mat-label class="title-input">Mô tả</mat-label>
+                        <textarea class="Text-a" matInput type="text" maxlength="250" placeholder="Mô tả" disabled="false" style="height: 80px;" [(ngModel)]="CTPNMoi.GhiChu"></textarea>
+                    </mat-form-field>
+                </div>
+
+            </div>
+            <div style="margin-left: 20px;">
+                <button mat-raised-button color="primary" (click)="themKichThuocBanhCu(KichThuocBanhMoi.DonGiaNhap,KichThuocBanhMoi.DonGiaBan,CTPNMoi.NSX,CTPNMoi.HSD,CTPNMoi.SL,CTPNMoi.GhiChu)">Thêm</button>
+                <button mat-raised-button color="primary" style="margin-left: 20px;" (click)="Thoat()">Thoát</button>
+            </div>
+           
+        </mat-card>
+    </div>
+
+    
+
+</div>
+
